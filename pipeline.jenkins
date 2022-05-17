@@ -39,10 +39,11 @@ pipeline {
                 sh 'docker build -f Dockerfile-tomcat -t boxfuse-tomcat:0.2 .'
             }
         }
-        stage('Push docker image to Dockerhub') {
+        stage('Push docker image to DockerHub') {
             steps {
-                sh 'docker login -u svdevops07'
-                sh 'docker push svdevops07/boxfuse-tomcat:0.2'
+                withDockerRegistry(credentialsId: 'dockerhub-token', url: 'https://index.docker.io/v1') {
+                    sh 'docker push svdevops07/boxfuse-tomcat:0.2'
+                }
             }
         }
     }
