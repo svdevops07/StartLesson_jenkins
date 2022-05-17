@@ -27,8 +27,7 @@ pipeline {
             steps {
                 script {
                     if ( "(sudo lsof -i :7778)" != "" ) {
-                        /usr/bin/kill $(/usr/sbin/lsof -i -t:7778)
-//                        sudo kill 'lsof -i :7778'
+                        sudo kill $(lsof -i :7778)
                     }
                 }
             }
