@@ -36,7 +36,7 @@ pipeline {
         }
         stage('Build docker image') {
             steps {
-                sh 'docker build -f Dockerfile-tomcat -t boxfuse-tomcat:0.2 .'
+                sh 'docker build -f Dockerfile-tomcat -t svdevops07/boxfuse-tomcat:0.2 .'
             }
         }
         stage('Push docker image to DockerHub') {
