@@ -8,6 +8,14 @@ pipeline {
                 sh 'docker version'
             }
         }
+        stage('Check existing image') {
+            steps {
+                sh ```
+                if [[ "$(docker images -q svdevops07/boxfuse-tomcat:0.2 2> /dev/null)" == "" ]]; then
+                docker rmi svdevops07/boxfuse-tomcat:0.2
+                ```
+            }
+        }
         stage('Docker pull from DockerHub') {
             steps {
                 sh 'docker pull svdevops07/boxfuse-tomcat:0.2'
