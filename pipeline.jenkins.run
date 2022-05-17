@@ -25,7 +25,7 @@ pipeline {
         }
         stage('Check port for running image') {
             steps {
-                sh 'kill netstat -tpln | awk -F'[[:space:]/:]+' '$5 == 7778 {print $(NF-2)}' || echo "port is empty"'
+                sh 'lsof -ti tcp:7778 | xargs --no-run-if-empty kill -9'
 //                script {
 //                    if ( fuser -k '7778/tcp' || true ) {
 //                    if ( "(sudo lsof -i :7778)" != "" ) {
