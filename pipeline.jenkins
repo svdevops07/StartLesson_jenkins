@@ -8,5 +8,14 @@ pipeline {
                 sh 'docker version'
             }
         }
+        stage('Checkout') {
+            steps {
+                git branch: 'main',
+                    url: 'https://github.com/svdevops07/boxfuse-docker'
+
+                sh 'pwd'
+                sh 'ls -la'
+            }
+        }
     }
 }
