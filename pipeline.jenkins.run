@@ -31,6 +31,7 @@ pipeline {
 //                    if ( "(sudo lsof -i :7778)" != "" ) {
 //                        sudo kill $(sudo lsof -t -i:7778)
 //                    }
+//                }
                 }
             }
         }
