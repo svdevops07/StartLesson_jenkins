@@ -26,8 +26,9 @@ pipeline {
         stage('Check port for running image') {
             steps {
                 script {
-                    if "(sudo lsof -i :7778)" != "" ]]; then
+                    if ( "(sudo lsof -i :7778)" != "" ) {
                         sudo kill `sudo lsof -i :7778`
+                    }
                 }
             }
         }
