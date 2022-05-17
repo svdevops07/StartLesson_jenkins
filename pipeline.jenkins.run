@@ -13,5 +13,10 @@ pipeline {
                 sh 'docker pull svdevops07/boxfuse-tomcat:0.2'
             }
         }
+        stage('Docker run') {
+            steps {
+                sh 'docker run -d -p 7778:8080 boxfuse-tomcat:0.2'
+            }
+        }
     }
 }
