@@ -42,8 +42,6 @@ pipeline {
         stage('Push docker image to Dockerhub') {
             steps {
                 sh 'docker login -u svdevops07'
-            }
-            steps {
                 sh 'docker push svdevops07/boxfuse-tomcat:0.2'
             }
         }
