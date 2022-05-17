@@ -1,0 +1,17 @@
+pipeline {
+    agent { label 'node3' }
+
+    stages {
+        stage('Docker version') {
+            steps {
+                sh "echo $USER"
+                sh 'docker version'
+            }
+        }
+        stage('Docker pull from DockerHub') {
+            steps {
+                sh 'docker pull svdevops07/boxfuse-tomcat:0.2'
+            }
+        }
+    }
+}
