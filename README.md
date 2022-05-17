@@ -4,4 +4,4 @@ Lesson from YouTube
 ## Resource
 From video [hier](https://www.youtube.com/watch?v=68pKqpDO2Zw&ab_channel=BAKAVETS)
 
-![img.png](img.png)
+![img_1.png](img_1.png)
