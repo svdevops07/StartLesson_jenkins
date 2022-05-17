@@ -12,7 +12,8 @@ pipeline {
             steps {
                 sh '''
                 if [[ "$(docker images -q svdevops07/boxfuse-tomcat:0.2 2> /dev/null)" == "" ]]; then
-                docker rmi svdevops07/boxfuse-tomcat:0.2
+                    docker rmi svdevops07/boxfuse-tomcat:0.2
+                fi
                 '''
             }
         }
