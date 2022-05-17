@@ -46,5 +46,10 @@ pipeline {
                 }
             }
         }
+        stage('Delete docker image locally') {
+            steps {
+                sh 'docker rmi svdevops07/boxfuse-tomcat:0.2'
+            }
+        }
     }
 }
