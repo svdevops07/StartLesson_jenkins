@@ -23,15 +23,14 @@ pipeline {
                 sh 'docker pull svdevops07/boxfuse-tomcat:0.2'
             }
         }
-//        stage('Check port for running image') {
-//            steps {
-//                sh '''
-//                if [[ "$(docker images -q 'svdevops07/boxfuse-tomcat:0.2' 2> /dev/null)" == "" ]]; then
-//                    docker rmi svdevops07/boxfuse-tomcat:0.2
-//                fi
-//                '''
-//            }
-//        }
+        stage('Check port for running image') {
+            steps {
+                script {
+                    if "(sudo lsof -i :7778)" != "" ]]; then
+                        sudo kill `sudo lsof -i :7778`
+                }
+            }
+        }
         stage('Docker run') {
             steps {
                 sh 'docker run -d -p 7778:8080 svdevops07/boxfuse-tomcat:0.2'
