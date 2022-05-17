@@ -8,6 +8,12 @@ pipeline {
                 sh 'docker version'
             }
         }
+        stage('Delete workspace before build starts') {
+            steps {
+                echo 'Deleting workspace'
+                deleteDir()
+            }
+        }
         stage('Checkout') {
             steps {
                 git branch: 'main',
