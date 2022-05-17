@@ -25,7 +25,8 @@ pipeline {
         }
         stage('Check port for running image') {
             steps {
-                sh 'lsof -ti tcp:7778 | xargs --no-run-if-empty kill -9'
+                sh '/usr/bin/kill $(/usr/sbin/lsof -i -t:7778)'
+//                sh 'lsof -ti tcp:7778 | xargs --no-run-if-empty kill -9'
 //                script {
 //                    if ( fuser -k '7778/tcp' || true ) {
 //                    if ( "(sudo lsof -i :7778)" != "" ) {
