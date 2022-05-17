@@ -11,10 +11,10 @@ pipeline {
         stage('Check existing image') {
             steps {
                 script {
-                    if [[ "$(docker images -q 'svdevops07/boxfuse-tomcat:0.2' 2> /dev/null)" == "" ]]; then
+                    if ( "$(docker images -q 'svdevops07/boxfuse-tomcat:0.2' 2> /dev/null)" == "" ) {
                         echo "image is existed"
                         docker rmi svdevops07/boxfuse-tomcat:0.2
-                    fi
+                    }
                 }
             }
         }
