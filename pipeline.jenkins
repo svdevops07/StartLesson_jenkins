@@ -12,6 +12,7 @@ pipeline {
             steps {
                 echo 'Deleting workspace'
                 deleteDir()
+                sh 'ls -la'
             }
         }
         stage('Checkout') {
@@ -31,6 +32,11 @@ pipeline {
                 }
                     sh 'pwd'
                     sh 'ls -la'
+            }
+        }
+        stage('Build docker image') {
+            steps {
+                sh 'docker build -f Dockerfile-tomcat -t boxfuse-tomcat:0.2 .'
             }
         }
     }
