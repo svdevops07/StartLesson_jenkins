@@ -25,13 +25,20 @@ pipeline {
         }
         stage('Check port for running image') {
             steps {
-                sh 'sudo /bin/kill -9 `sudo lsof -t -i:7778`'
-                sh 'docker stop svdevops07/boxfuse-tomcat:0.2'
+                script {
+                    if ( "sudo lsof -t -i:7778" != "" ) {
+                        echo "port in not empty"
+                        docker stop "boxfuse-tomcat"
+                        docker rm "boxfuse-tomcat"
+                    } else {
+                        echo "port is empty"
+                    }
+                }
             }
         }
         stage('Docker run') {
             steps {
-                sh 'docker run -d -p 7778:8080 svdevops07/boxfuse-tomcat:0.2'
+                sh 'docker run --name boxfuse-tomcat -d -p 7778:8080 svdevops07/boxfuse-tomcat:0.2'
             }
         }
     }
