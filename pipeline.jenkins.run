@@ -26,6 +26,7 @@ pipeline {
         stage('Check port for running image') {
             steps {
                 sh 'sudo /bin/kill -9 `sudo lsof -t -i:7778`'
+                sh 'docker stop svdevops07/boxfuse-tomcat:0.2'
             }
         }
         stage('Docker run') {
